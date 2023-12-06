@@ -1,15 +1,22 @@
-create database banco_de_usuarios;
+-- Criar um banco de dados (se não existir)
+CREATE DATABASE IF NOT EXISTS Escola;
 
-use banco_de_usuarios;
+-- Selecionar o banco de dados
+USE Escola;
 
-create table usuario(
-	id      		integer auto_increment primary key, 
-	nome   			varchar(200) not null, 
-	email       	varchar (50) not null unique, 
-    senha			text not null, 
-	telefone    	varchar(15) not null
+-- Criar tabela para armazenar informações de presença
+CREATE TABLE IF NOT EXISTS Presenca (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome_aluno VARCHAR(100) NOT NULL,
+    data_presenca DATE NOT NULL,
+    presente BOOLEAN NOT NULL
 );
 
-insert into usuario values (null, 'carlos', 'carlos@email.com', 'senha123434', '11954856676');
+-- Inserir exemplos de dados
+INSERT INTO Presenca (nome_aluno, data_presenca, presente) VALUES
+('João', '2023-12-06', true),
+('Maria', '2023-12-06', false),
+('Pedro', '2023-12-06', true);
 
-select * from data_usuarios.usuario;
+-- Selecionar todos os registros da tabela
+SELECT * FROM Presenca;
